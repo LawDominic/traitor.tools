@@ -1,26 +1,27 @@
 import React from 'react';
 
 import { useMetaMask } from "metamask-react";
+import { Routes, Route, Link } from "react-router-dom";
 
 function NavBar() {
 
-    const { status, connect, account, chainId } = useMetaMask();
+    const { status, connect, account } = useMetaMask();
 
     return (
         <div>
             <nav className="font-kanit">
-                <div class="max-w-6xl mx-auto px-4">
+                <div class="max-w-7xl mx-auto px-4">
                     <div class="flex justify-between">
                         <div class="flex space-x-4">
                             <div>
-                            <a href="#" class="flex items-center py-5 px-2 text-black hover:text-gray-900">
+                            <Link to="/" class="flex items-center py-5 px-2 text-black hover:text-gray-900">
                                 <span class="font-semibold text-4xl text-indigo-900">traitor</span>
-                            </a>
+                            </Link>
                             </div>
                         </div>
 
                         <div class="hidden md:flex items-center space-x-1">
-                            <a href="" class="py-5 px-3 text-xl">Link</a>
+                            <Link to="/trait" class="py-5 px-3 text-xl">Trait</Link>
                             {(function() {
                                 switch(status) {
                                     case 'notConnected':
@@ -32,7 +33,6 @@ function NavBar() {
                                             <span className="text-yellow-500 text-semibold bg-yellow-100 hover:bg-yellow-300 rounded-full py-2 px-3 transition duration-300">Connecting...</span>
                                         )
                                     case 'connected':
-                                        console.log(chainId)
                                         return (
                                             <div>
                                                 <span className="text-green-500 text-semibold bg-green-100 rounded-full py-2 px-3 transition duration-300">
